@@ -102,9 +102,3 @@ ENV/
 .mypy_cache/
 
 RUNS/
-
-data/processed_sim_data
-data/raw_sim_data
-data/train
-data/validation
-data/sample_evaluation_data
