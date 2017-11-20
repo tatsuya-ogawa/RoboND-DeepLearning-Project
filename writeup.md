@@ -24,8 +24,11 @@ With this technique the amount of calculation can theoretically be reduced to O(
 
 ![alt text](./docs/misc/depthwise_separable_convolution.png)
 
-* 1x1 convolution
+* 1x1 Convolution
 After the encoders I used a 1x1 convolution layer with 256 depth.
+
+### 1x1 Convolution ####
+A 1x1 convolutional layer is a mini-neural network of 1 pixel width and height. It is typically used between other convolution layers to increase the depth and number of parameters of a model without changing the structure of it. 
 
 * Decoder
 Decoder block consists of an upsampling layer,concatinate filter, and two separable_conv2d_batchnorm layers.
@@ -39,6 +42,7 @@ This block is the network to Upsample the decoded information from the previous 
 In order to realize skip connection, the value of the convolution layer is learned according to the decoder layer.
 This is a technique for learning deep convolution which began to be used from
 [resnet](https://arxiv.org/abs/1512.03385).
+Skip connections enable the network to use images from multiple resolution scales by connecting non-adjacent layers. This results in more precise semantic segmentation in the output image.
 
 ## Hyper Parameters ##
 * Learning rate
@@ -55,7 +59,6 @@ but due to memory constraints, it was set to 40 because out of memory occurred w
 I gradually increased the epoch , loss has not reduced at around 20.
 Finaly I choose it to 100 so that it will be many epoch unless over learning.
 
-
 ## Results ##
 With the above model and hyper-parameters, I achieved a final_score = 0.478099493142.
  The image below shows the loss curve for the last epoch of training. The final train_los = 0.0074 and val_loss = 0.0314
@@ -68,6 +71,9 @@ IoU is how much the target area g (ground truth box) is contained in the box b (
 IoU(b,g)=area(b \bigcup g)/area(b \bigcap g)
 The reward function R when performing action a in state s and transitioning to state s' using IoU is defined as follows.
 R_{a}(s,s') = sign(IoU(b',g)-IoU(b,g))
+
+## Analysys ##
+Regarding the use of the same model and data to detect and follow other people or objects, this would not be possible for the current model since it has been trained for a particular image(hero). However, we could use the same network architecture to train and produce separate models for other objects we would want to be able to detect.
 
 ## Future Improvements ##
 * Collect more image samples by simulator.
