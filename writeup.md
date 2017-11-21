@@ -66,8 +66,9 @@ The other semantic segmentation technicks and details are explained [here](https
 ## Hyper Parameters ##
 
 I tried several parameters and got the following results.
+
 | paraeter | Run1 |Run2 |Run3 |Run4 |Final|
------------|------------|------------|------------|------------|------------
+|:-----------|------------|------------|------------|------------|------------:|
 | Learning rate     | 0.01    |0.01    |0.05    |0.01    |0.01|
 | Batch size        | 40      |20    |40    |40    |40|
 | Number of epochs  | 10     |10    |10    |10    |100|
@@ -77,8 +78,9 @@ I tried several parameters and got the following results.
 | Final IoU           | 0.35662643218       |0.392708333595    |0.172374826299    |0.445576345659    |0.478099493142|
 
 Finally I selected the following parameters.
+
 | paraeter | Value |
------------|------------
+|:-----------|------------:|
 | Learning rate     | 0.01    |
 | Batch size        | 40      |
 | Number of epochs  | 100     |
